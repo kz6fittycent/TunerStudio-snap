@@ -16,8 +16,7 @@ apps:
     plugs:
       - network
       - home
-      - network-bind
-      - raw-usb
+#      - raw-usb
       - removeable-media
       - x11
       - unity7
