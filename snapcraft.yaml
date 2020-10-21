@@ -11,12 +11,12 @@ confinement: strict
 
 apps:
   tunerstudio:
-    extensions: [kde-neon]
+    extensions: [gnome-3-28]
     command: bash $SNAP/bin/TunerStudio/TunerStudio.sh
     plugs:
       - network
       - home
-#      - raw-usb
+      - raw-usb
       - removeable-media
       - x11
       - unity7
