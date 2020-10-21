@@ -9,6 +9,9 @@ base: core18
 grade: stable
 confinement: strict
 
+architectures:
+  - build-on: amd64
+
 apps:
   tunerstudio:
 #    extensions: [gnome-3-28]
