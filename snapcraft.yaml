@@ -18,6 +18,13 @@ apps:
       - network-bind
       - raw-usb
       - removeable-media
+      - x11
+      - unity7
+      - opengl
+      - wayland
+      - desktop
+      - desktop-legacy
+      - browser-support
       
 parts:
   tunerstudio:
