@@ -11,6 +11,7 @@ confinement: strict
 
 apps:
   tunerstudio:
+    extensions: [kde-neon]
     command: bash $SNAP/bin/TunerStudio/TunerStudio.sh
     plugs:
       - network
@@ -31,7 +32,7 @@ parts:
     source: https://www.efianalytics.com/TunerStudio/download/TunerStudioMS_v3.1.04.tar.gz
     source-type: tar
     plugin: nil
-    after: [kde-neon]
+
 #    override-pull: |
 #      snapcraftctl pull
 #      snapcraftctl set-version "$(curl -fsSL https://www.efianalytics.com/TunerStudio/download | grep -i "tar.gz" | cut -d ">" -f2 | cut -d "v" -f2 | cut -d "." -f1,2,3)"
