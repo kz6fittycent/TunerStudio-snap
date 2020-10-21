@@ -11,7 +11,7 @@ confinement: strict
 
 apps:
   tunerstudio:
-    command: sh $SNAP/TunerStudio.sh
+    command: sh $SNAP/bin/TunerStudio/TunerStudio.sh
     plugs:
       - network
       - home
@@ -22,7 +22,7 @@ parts:
   tunerstudio:
     source: https://www.efianalytics.com/TunerStudio/download/TunerStudioMS_v3.1.04.tar.gz
     source-type: tar
-    plugin: tar
+    plugin: nil
     
     override-pull: |
       curl -fsSL https://www.efianalytics.com/TunerStudio/download | grep -i "tar.gz" | cut -d ">" -f2 | cut -d "v" -f2 | cut -d "." -f1,2,3
@@ -33,3 +33,8 @@ parts:
     stage-packages:
       - openjdk-11-jre-headless
     
+  publish:
+    plugin: dump
+    source: .
+    organize:
+      ./TunerStudioMS: /bin/TunerStudioMS
