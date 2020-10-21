@@ -1,5 +1,5 @@
-name: tunerstudioms
-version: 
+name: tunerstudio
+adopt-info: tunerstudio
 description: |
   TunerStudio MS, the most most advanced and refined MegaSquirt Tuning software available.
   The registered and Lite! editions are the same installer.
@@ -9,8 +9,8 @@ grade: stable
 confinement: strict
 
 apps:
-  tunerstudioms:
-    command: $SNAP/usr/local/bin/TunerStudio.sh
+  tunerstudio:
+    command: $SNAP/usr/local/bin/TunerStudio/TunerStudio.sh
     plugs:
       - network
       - home
@@ -18,7 +18,7 @@ apps:
       - raw-usb
       
 parts:
-  mc-server-installer:
+  tunerstudio:
     source: https://www.efianalytics.com/TunerStudio/download/TunerStudioMS_v3.1.04.tar.gz
     source-type: tar
     plugin: nil
