@@ -1,0 +1,38 @@
+name: tunerstudioms
+version: 
+description: |
+  TunerStudio MS, the most most advanced and refined MegaSquirt Tuning software available.
+  The registered and Lite! editions are the same installer.
+
+base: core18
+grade: stable
+confinement: strict
+
+apps:
+  tunerstudioms:
+    command: $SNAP/usr/local/bin/TunerStudio.sh
+    plugs:
+      - network
+      - home
+      - network-bind
+      - raw-usb
+      
+parts:
+  mc-server-installer:
+    source: https://www.efianalytics.com/TunerStudio/download/TunerStudioMS_v3.1.04.tar.gz
+    source-type: tar
+    plugin: nil
+    
+    override-build: |
+      mkdir -p /usr/local/bin/TunerStudio && tar -xf TunerStudioMS_v3.1.04.tar.gz /usr/local/bin/TunerStudio/
+      chmod a+x /usr/local/bin/TunerStudio.sh
+    
+    override-pull: |
+      curl -fsSL https://www.efianalytics.com/TunerStudio/download | grep -i "tar.gz" | cut -d ">" -f2 | cut -d "v" -f2 | cut -d "." -f1,2,3
+    
+    build-packages:
+      - openjdk-11-jre-headless
+    
+    stage-packages:
+      - openjdk-11-jre-headless
+    
