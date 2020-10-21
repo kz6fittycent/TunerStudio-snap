@@ -11,7 +11,7 @@ confinement: strict
 
 apps:
   tunerstudio:
-    extensions: [gnome-3-28]
+#    extensions: [gnome-3-28]
     command: bash $SNAP/bin/TunerStudio/TunerStudio.sh
     plugs:
       - network
