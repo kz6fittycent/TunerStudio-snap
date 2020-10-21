@@ -1,5 +1,5 @@
 name: tunerstudio
-adopt-info: tunerstudio
+version: 3.1.04
 summary: TunerStudio MS - an advanced MegaSquirt Tuning Software
 description: |
   TunerStudio MS, the most most advanced and refined MegaSquirt Tuning software available.
@@ -24,9 +24,9 @@ parts:
     source-type: tar
     plugin: nil
     
-    override-pull: |
-      snapcraftctl pull
-      snapcraftctl set-version "$(curl -fsSL https://www.efianalytics.com/TunerStudio/download | grep -i "tar.gz" | cut -d ">" -f2 | cut -d "v" -f2 | cut -d "." -f1,2,3)"
+#    override-pull: |
+#      snapcraftctl pull
+#      snapcraftctl set-version "$(curl -fsSL https://www.efianalytics.com/TunerStudio/download | grep -i "tar.gz" | cut -d ">" -f2 | cut -d "v" -f2 | cut -d "." -f1,2,3)"
     
     build-packages:
       - openjdk-11-jre-headless
