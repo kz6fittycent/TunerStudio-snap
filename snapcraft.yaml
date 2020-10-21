@@ -25,7 +25,8 @@ parts:
     plugin: nil
     
     override-pull: |
-      curl -fsSL https://www.efianalytics.com/TunerStudio/download | grep -i "tar.gz" | cut -d ">" -f2 | cut -d "v" -f2 | cut -d "." -f1,2,3
+      snapcraftctl pull
+      snapcraftctl set-version "$(curl -fsSL https://www.efianalytics.com/TunerStudio/download | grep -i "tar.gz" | cut -d ">" -f2 | cut -d "v" -f2 | cut -d "." -f1,2,3)"
     
     build-packages:
       - openjdk-11-jre-headless
