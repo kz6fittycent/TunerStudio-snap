@@ -20,7 +20,7 @@ apps:
       - network
       - home
       - raw-usb
-      - removeable-media
+      - removable-media
       - x11
       - unity7
       - opengl
