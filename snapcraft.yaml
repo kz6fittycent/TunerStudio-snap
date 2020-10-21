@@ -11,7 +11,7 @@ confinement: strict
 
 apps:
   tunerstudio:
-    command: $SNAP/usr/local/bin/TunerStudio/TunerStudio.sh
+    command: sh $SNAP/TunerStudio.sh
     plugs:
       - network
       - home
@@ -22,11 +22,7 @@ parts:
   tunerstudio:
     source: https://www.efianalytics.com/TunerStudio/download/TunerStudioMS_v3.1.04.tar.gz
     source-type: tar
-    plugin: nil
-    
-    override-build: |
-      mkdir -p /usr/local/bin/TunerStudio && tar -xf TunerStudioMS_v3.1.04.tar.gz /usr/local/bin/TunerStudio/
-      chmod a+x /usr/local/bin/TunerStudio.sh
+    plugin: tar
     
     override-pull: |
       curl -fsSL https://www.efianalytics.com/TunerStudio/download | grep -i "tar.gz" | cut -d ">" -f2 | cut -d "v" -f2 | cut -d "." -f1,2,3
