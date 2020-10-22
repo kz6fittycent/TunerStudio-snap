@@ -15,7 +15,7 @@ architectures:
 apps:
   tunerstudio:
 #    extensions: [gnome-3-28]
-    command: /bin/sh $SNAP/usr/bin/TunerStudioMS/TunerStudio.sh
+    command: usr/bin/TunerStudioMS/TunerStudio.sh
     plugs:
       - network
       - home
