@@ -54,4 +54,5 @@ parts:
     stage-packages:
       - openjdk-11-jre-headless
       - librxtx-java
-      - libfonts-java
+      - fontconfig
+      - fontconfig-config
