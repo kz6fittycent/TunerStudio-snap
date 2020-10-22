@@ -33,19 +33,17 @@ parts:
   tunerstudio:
     source: https://www.efianalytics.com/TunerStudio/download/TunerStudioMS_v3.1.04.tar.gz
     source-type: tar
-    plugin: dump
-    organize:
-      TunerStudioMS: usr/bin/TunerStudioM
+    plugin: nil
     override-build: |
-      tar xvzf TunerStudioMS_v3.1.04.tar.gz
-#    override-pull: |
-#      snapcraftctl pull
-#      snapcraftctl set-version "$(curl -fsSL https://www.efianalytics.com/TunerStudio/download | grep -i "tar.gz" | cut -d ">" -f2 | cut -d "v" -f2 | cut -d "." -f1,2,3)"
-    
+      wget -O TunerStudio.tar.gz https://www.efianalytics.com/TunerStudio/download/TunerStudioMS_v3.1.04.tar.gz
+      tar xvzf TunerStudio.tar.gz
+      cd TunerStudioMS_v3.1.04/
+      mkdir -p "$SNAPCRAFT_PART_INSTALL"/usr/bin/TunerStudioMS/
+      mv $PWD/TunerStudioMS "$SNAPCRAFT_PART_INSTALL"/usr/bin/TunerStudioMS/
+      chmod a+x "$SNAPCRAFT_PART_INSTALL"/usr/bin/TunerStudioMS/TunerStudio.sh
+      
     build-packages:
       - openjdk-11-jre-headless
-      - bash
     
     stage-packages:
       - openjdk-11-jre-headless
-      - bash
