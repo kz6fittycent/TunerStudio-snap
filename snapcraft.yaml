@@ -59,4 +59,4 @@ parts:
       - fontconfig-config
       - libfontconfig1
       - x11-utils
-      - libgtk-3-common
+      - gcc
