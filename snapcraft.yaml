@@ -14,7 +14,7 @@ architectures:
 
 apps:
   tunerstudio:
-    extensions: [gnome-3-28]
+    extensions: [kde-neon]
     command: usr/bin/TunerStudioMS/TunerStudio.sh
     environment:
       JAVA_HOME: $SNAP/usr/lib/jvm/java-11-openjdk-$SNAP_ARCH
