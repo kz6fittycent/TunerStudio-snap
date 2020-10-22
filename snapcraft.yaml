@@ -46,13 +46,13 @@ parts:
       mv TunerStudioMS/* "$SNAPCRAFT_PART_INSTALL"/usr/bin/TunerStudioMS/
       
     build-packages:
-      - openjdk-11-jre-headless
+      - openjdk-8-jre-headless
       - wget
       - tar
       - librxtx-java
       
     stage-packages:
-      - openjdk-11-jre-headless
+      - openjdk-8-jre-headless
       - librxtx-java
       - fontconfig
       - fontconfig-config
