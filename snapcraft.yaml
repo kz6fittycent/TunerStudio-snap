@@ -16,6 +16,10 @@ apps:
   tunerstudio:
 #    extensions: [gnome-3-28]
     command: usr/bin/TunerStudioMS/TunerStudio.sh
+    environment:
+      LC_ALL: C.UTF-8    
+      JAVA_HOME: $SNAP/usr/lib/jvm/java-11-openjdk-$SNAP_ARCH
+      PATH: $JAVA_HOME/bin:$PATH
     plugs:
       - network
       - home
@@ -34,9 +38,7 @@ parts:
     source: https://www.efianalytics.com/TunerStudio/download/TunerStudioMS_v3.1.04.tar.gz
     source-type: tar
     plugin: nil
-    environment:
-      JAVA_HOME: $SNAP/usr/lib/jvm/java-11-openjdk-$SNAP_ARCH
-      PATH: $JAVA_HOME/bin:$PATH
+
     override-build: |
       set -xe
       wget -O TunerStudio.tar.gz https://www.efianalytics.com/TunerStudio/download/TunerStudioMS_v3.1.04.tar.gz
