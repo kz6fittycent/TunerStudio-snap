@@ -14,7 +14,7 @@ architectures:
 
 apps:
   tunerstudio:
-    extensions: [kde-neon]
+    extensions: [gnome-3-34]
     command: desktop-launch $SNAP/usr/bin/TunerStudioMS/TunerStudio.sh
     environment:
       JAVA_HOME: $SNAP/usr/lib/jvm/java-8-openjdk-$SNAP_ARCH
@@ -47,13 +47,13 @@ parts:
       mv TunerStudioMS/* "$SNAPCRAFT_PART_INSTALL"/usr/bin/TunerStudioMS/
       
     build-packages:
-      - openjdk-8-jre-headless
+      - openjdk-8-jre
       - wget
       - tar
       - librxtx-java
       
     stage-packages:
-      - openjdk-8-jre-headless
+      - openjdk-8-jre
       - librxtx-java
       - fontconfig
       - fontconfig-config
