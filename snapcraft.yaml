@@ -45,6 +45,8 @@ parts:
       - openjdk-11-jre-headless
       - wget
       - tar
+      - librxtx-java
       
     stage-packages:
       - openjdk-11-jre-headless
+      - librxtx-java
