@@ -15,7 +15,7 @@ architectures:
 apps:
   tunerstudio:
     extensions: [kde-neon]
-    command: usr/bin/TunerStudioMS/TunerStudio.sh
+    command: desktop-launch usr/bin/TunerStudioMS/TunerStudio.sh
     environment:
       JAVA_HOME: $SNAP/usr/lib/jvm/java-11-openjdk-$SNAP_ARCH
       PATH: $JAVA_HOME/bin:$PATH
@@ -31,6 +31,7 @@ apps:
       - desktop
       - desktop-legacy
       - browser-support
+      - audio-playback
       
 parts:
   tunerstudio:
