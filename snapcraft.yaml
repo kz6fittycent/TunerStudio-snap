@@ -58,5 +58,4 @@ parts:
       - fontconfig
       - fontconfig-config
       - libfontconfig1
-      - x11-utils
-      - gcc
+      - glibc-source
