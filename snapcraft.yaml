@@ -17,7 +17,6 @@ apps:
 #    extensions: [gnome-3-28]
     command: usr/bin/TunerStudioMS/TunerStudio.sh
     environment:
-      LC_ALL: C.UTF-8    
       JAVA_HOME: $SNAP/usr/lib/jvm/java-11-openjdk-$SNAP_ARCH
       PATH: $JAVA_HOME/bin:$PATH
     plugs:
