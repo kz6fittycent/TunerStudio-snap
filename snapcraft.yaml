@@ -56,3 +56,4 @@ parts:
       - librxtx-java
       - fontconfig
       - fontconfig-config
+      - libfontconfig1
