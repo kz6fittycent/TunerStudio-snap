@@ -15,7 +15,7 @@ architectures:
 apps:
   tunerstudio:
     extensions: [gnome-3-28]
-    command: bash $SNAP/bin/TunerStudio/TunerStudio.sh
+    command: /bin/sh $SNAP/usr/bin/TunerStudio/TunerStudio.sh
     plugs:
       - network
       - home
@@ -33,8 +33,11 @@ parts:
   tunerstudio:
     source: https://www.efianalytics.com/TunerStudio/download/TunerStudioMS_v3.1.04.tar.gz
     source-type: tar
-    plugin: nil
-
+    plugin: dump
+    organize:
+      TunerStudioMS: usr/bin/TunerStudioM
+    override-build: |
+      tar xvzf TunerStudioMS_v3.1.04.tar.gz
 #    override-pull: |
 #      snapcraftctl pull
 #      snapcraftctl set-version "$(curl -fsSL https://www.efianalytics.com/TunerStudio/download | grep -i "tar.gz" | cut -d ">" -f2 | cut -d "v" -f2 | cut -d "." -f1,2,3)"
@@ -46,9 +49,3 @@ parts:
     stage-packages:
       - openjdk-11-jre-headless
       - bash
-    
-  publish:
-    plugin: dump
-    source: .
-    organize:
-      ./TunerStudioMS: /bin/TunerStudioMS
