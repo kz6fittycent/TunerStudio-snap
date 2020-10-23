@@ -13,7 +13,7 @@ architectures:
   - build-on: amd64
 
 layout:
-  /usr/bin/xprop: 
+  usr/bin/xprop: 
     symlink: $SNAP/usr/bin/xprop
 
 apps:
