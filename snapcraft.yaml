@@ -20,9 +20,9 @@ apps:
   tunerstudio: 
     command: sh $SNAP/launch.sh
 #    extensions: [gnome-3-28] 
-    environment:
-      JAVA_HOME: $SNAP/usr/lib/jvm/java-8-openjdk-$SNAP_ARCH
-      PATH: $JAVA_HOME/bin:$PATH
+#    environment:
+#      JAVA_HOME: $SNAP/usr/lib/jvm/java-8-openjdk-$SNAP_ARCH
+#      PATH: $JAVA_HOME/bin:$PATH
   
     plugs:
       - network
@@ -48,8 +48,8 @@ parts:
       set -xe
       wget -O TunerStudio.tar.gz https://www.efianalytics.com/TunerStudio/download/TunerStudioMS_v3.1.04.tar.gz
       tar xvzf TunerStudio.tar.gz
-      mkdir -p "$SNAPCRAFT_PART_INSTALL"/TunerStudioMS/
-      mv TunerStudioMS/* "$SNAPCRAFT_PART_INSTALL"/TunerStudioMS/
+#      mkdir -p "$SNAPCRAFT_PART_INSTALL"/TunerStudioMS/
+#      mv TunerStudioMS/* "$SNAPCRAFT_PART_INSTALL"/TunerStudioMS/
       
     build-packages:
       - openjdk-8-jre
