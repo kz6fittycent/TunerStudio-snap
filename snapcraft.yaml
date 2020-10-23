@@ -14,7 +14,7 @@ architectures:
 
 layout:
   /usr/bin/xprop: 
-    bind: $SNAP/usr/bin/xprop
+    symlink: $SNAP/usr/bin/xprop
 
 apps:
   tunerstudio:
