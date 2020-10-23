@@ -19,6 +19,10 @@ apps:
     environment:
       JAVA_HOME: $SNAP/usr/lib/jvm/java-8-openjdk-$SNAP_ARCH
       PATH: $JAVA_HOME/bin:$PATH
+    layout:
+      /usr/bin/xprop:
+        symlink: $SNAP/usr/bin/xprop
+      
     plugs:
       - network
       - home
@@ -32,6 +36,7 @@ apps:
       - desktop-legacy
       - browser-support
       - audio-playback
+      - pulseaudio
       
 parts:
   tunerstudio:
@@ -58,4 +63,4 @@ parts:
       - fontconfig
       - fontconfig-config
       - libfontconfig1
-      - glibc-source
+      - x11-utils
