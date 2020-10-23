@@ -44,10 +44,10 @@ parts:
     source-type: tar
     plugin: nil
 
-    override-build: |
-      set -xe
-      wget -O TunerStudio.tar.gz https://www.efianalytics.com/TunerStudio/download/TunerStudioMS_v3.1.04.tar.gz
-      tar xvzf TunerStudio.tar.gz
+#    override-build: |
+#      set -xe
+#      wget -O TunerStudio.tar.gz https://www.efianalytics.com/TunerStudio/download/TunerStudioMS_v3.1.04.tar.gz
+#      tar xvzf TunerStudio.tar.gz
 #      mkdir -p "$SNAPCRAFT_PART_INSTALL"/TunerStudioMS/
 #      mv TunerStudioMS/* "$SNAPCRAFT_PART_INSTALL"/TunerStudioMS/
       
