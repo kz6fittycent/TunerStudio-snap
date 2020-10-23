@@ -14,11 +14,12 @@ architectures:
 
 apps:
   tunerstudio:
-    extensions: [gnome-3-34]
+    after: [desktop-gtk2]
     command: desktop-launch $SNAP/usr/bin/TunerStudioMS/TunerStudio.sh
     environment:
       JAVA_HOME: $SNAP/usr/lib/jvm/java-8-openjdk-$SNAP_ARCH
       PATH: $JAVA_HOME/bin:$PATH
+    
     plugs:
       - network
       - home
@@ -58,4 +59,4 @@ parts:
       - fontconfig
       - fontconfig-config
       - libfontconfig1
-      - x11-utils
+      - x11-xserver-utils
