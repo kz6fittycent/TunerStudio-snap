@@ -13,13 +13,16 @@ architectures:
   - build-on: amd64
 
 apps:
-  tunerstudio:
-#    after: [desktop-gtk2]
-    command: desktop-launch $SNAP/usr/bin/TunerStudioMS/TunerStudio.sh
+  tunerstudio: 
+    command: usr/bin/TunerStudioMS/TunerStudio.sh
+    extensions: [gnome-28] 
     environment:
       JAVA_HOME: $SNAP/usr/lib/jvm/java-8-openjdk-$SNAP_ARCH
       PATH: $JAVA_HOME/bin:$PATH
-    
+layout:
+  /usr/bin/xprop:
+    symlink: $SNAP/usr/bin/xprop
+  
     plugs:
       - network
       - home
