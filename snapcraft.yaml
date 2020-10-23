@@ -36,7 +36,6 @@ layout:
       - desktop-legacy
       - browser-support
       - audio-playback
-      - pulseaudio
       
 parts:
   tunerstudio:
