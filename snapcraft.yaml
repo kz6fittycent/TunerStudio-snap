@@ -12,18 +12,10 @@ confinement: strict
 architectures:
   - build-on: amd64
 
-#layout:
-#  /usr/bin/xprop:
-#    bind: $SNAP_COMMON/usr/bin/xprop
-
 apps:
   tunerstudio: 
-    command: sh $SNAP/launch.sh
-#    extensions: [gnome-3-28] 
-#    environment:
-#      JAVA_HOME: $SNAP/usr/lib/jvm/java-8-openjdk-$SNAP_ARCH
-#      PATH: $JAVA_HOME/bin:$PATH
-  
+    command: desktop-launch $SNAP/launch
+    extensions: [gnome-3-34] 
     plugs:
       - network
       - home
@@ -38,19 +30,11 @@ apps:
       - browser-support
       - audio-playback
       
-parts:
   tunerstudio:
     source: https://github.com/kz6fittycent/TunerStudio-snap
     source-type: git
     plugin: nil
-
-#    override-build: |
-#      set -xe
-#      wget -O TunerStudio.tar.gz https://www.efianalytics.com/TunerStudio/download/TunerStudioMS_v3.1.04.tar.gz
-#      tar xvzf TunerStudio.tar.gz
-#      mkdir -p "$SNAPCRAFT_PART_INSTALL"/TunerStudioMS/
-#      mv TunerStudioMS/* "$SNAPCRAFT_PART_INSTALL"/TunerStudioMS/
-      
+    
     build-packages:
       - openjdk-8-jre
       - wget
