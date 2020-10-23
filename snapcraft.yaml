@@ -40,8 +40,8 @@ apps:
       
 parts:
   tunerstudio:
-    source: https://www.efianalytics.com/TunerStudio/download/TunerStudioMS_v3.1.04.tar.gz
-    source-type: tar
+    source: https://github.com/kz6fittycent/TunerStudio-snap
+    source-type: git
     plugin: nil
 
 #    override-build: |
@@ -64,6 +64,8 @@ parts:
       - fontconfig-config
       - libfontconfig1
       - x11-xserver-utils
+      - wget
+      - tar
 
   publish:
     plugin: dump
