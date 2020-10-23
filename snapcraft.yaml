@@ -12,6 +12,10 @@ confinement: strict
 architectures:
   - build-on: amd64
 
+layout:
+  /usr/bin/xprop:
+    bind: $SNAP_COMMON/usr/bin/xprop
+
 apps:
   tunerstudio: 
     command: usr/bin/TunerStudioMS/TunerStudio.sh
@@ -19,9 +23,6 @@ apps:
     environment:
       JAVA_HOME: $SNAP/usr/lib/jvm/java-8-openjdk-$SNAP_ARCH
       PATH: $JAVA_HOME/bin:$PATH
-layout:
-  /usr/bin/xprop:
-    symlink: $SNAP/usr/bin/xprop
   
     plugs:
       - network
