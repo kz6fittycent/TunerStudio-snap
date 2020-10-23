@@ -30,7 +30,7 @@ then
 else
 
   # GET TunerStudio
-  curl -so ${TSL}
+  curl -so ${TS} ${TSL}
   tar xvzf ${TS}
   
   # CLEAN UP
