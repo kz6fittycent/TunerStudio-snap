@@ -12,10 +12,6 @@ confinement: strict
 architectures:
   - build-on: amd64
 
-layout:
-  usr/bin/xprop: 
-    symlink: $SNAP/usr/bin/xprop
-
 apps:
   tunerstudio:
     extensions: [gnome-3-34]
