@@ -15,7 +15,7 @@ architectures:
 apps:
   tunerstudio: 
     command: usr/bin/TunerStudioMS/TunerStudio.sh
-    extensions: [gnome-28] 
+    extensions: [gnome-3-28] 
     environment:
       JAVA_HOME: $SNAP/usr/lib/jvm/java-8-openjdk-$SNAP_ARCH
       PATH: $JAVA_HOME/bin:$PATH
