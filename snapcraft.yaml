@@ -64,7 +64,7 @@ parts:
       - fontconfig-config
       - libfontconfig1
       - x11-xserver-utils
-      - wget
+      - curl
       - tar
 
   publish:
