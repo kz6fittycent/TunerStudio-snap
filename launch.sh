@@ -2,7 +2,7 @@
 
 # VARIABLES
 ########################################
-HOME="$HOME/snap/tunerstudio/current/"
+HOME="$HOME/snap/tunerstudio/current"
 TSD="$HOME/snap/tunerstudio/current/TunerStudioMS"
 TSL="https://www.efianalytics.com/TunerStudio/download/TunerStudioMS_v3.1.04.tar.gz"
 TS="TunerStudio.tar.gz"
