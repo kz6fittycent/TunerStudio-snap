@@ -27,7 +27,7 @@ then
 else
 
   # GET TunerStudio
-  curl -so ${TS} ${TSF}
+  curl -so ${TS} ${TSL}
   tar xvzf ${TS} -C ${TSD}
   
   # CLEAN UP
