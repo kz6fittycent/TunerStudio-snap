@@ -18,7 +18,7 @@ layout:
 
 apps:
   tunerstudio: 
-    command: java -jar TunerStudioMS.jar
+    command: java -jar $SNAP/usr/bin/TunerStudioMS/TunerStudioMS.jar
     extensions: [gnome-3-28] 
     environment:
       JAVA_HOME: $SNAP/usr/lib/jvm/java-8-openjdk-$SNAP_ARCH
