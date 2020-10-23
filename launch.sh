@@ -2,7 +2,8 @@
 
 # VARIABLES
 ########################################
-TSD="$SNAP_USER_DATA/TunerStudioMS"
+HOME="$HOME/snap/tunerstudio/current/"
+TSD="$HOME/snap/tunerstudio/current/TunerStudioMS"
 TSL="https://www.efianalytics.com/TunerStudio/download/TunerStudioMS_v3.1.04.tar.gz"
 TS="TunerStudio.tar.gz"
 SERIAL_DRIVER="${TSD}/lib/alternateLinuxDrivers/x86_64-linux:"
@@ -30,11 +31,11 @@ then
 else
 
   # GET TunerStudio
-  curl -so $SNAP_USER_DATA/${TS} ${TSL}
-  tar xvzf $SNAP_USER_DATA/${TS}
+  curl -so ${HOME}/${TS} ${TSL}
+  tar xvzf ${HOME}/${TS}
   
   # CLEAN UP
-  rm -rf $SNAP_USER_DATA/${TS}
+  rm -rf ${HOME}/${TS}
   
   # START
   java -Dcom.ibm.crypto.provider.DoRSATypeChecking=false -Djava.library.path=${SERIAL_DRIVER}lib -cp ".:lib:plugins" -jar ${TSD}/TunerStudioMS.jar TunerStudioMS.jar
