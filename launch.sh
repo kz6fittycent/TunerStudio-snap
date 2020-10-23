@@ -30,11 +30,11 @@ then
 else
 
   # GET TunerStudio
-  curl -so ${TS} ${TSL}
-  tar xvzf ${TS}
+  curl -so $SNAP_USER_DATA/${TS} ${TSL}
+  tar xvzf $SNAP_USER_DATA/${TS}
   
   # CLEAN UP
-  rm -rf ${TS}
+  rm -rf $SNAP_USER_DATA/${TS}
   
   # START
   java -Dcom.ibm.crypto.provider.DoRSATypeChecking=false -Djava.library.path=${SERIAL_DRIVER}lib -cp ".:lib:plugins" -jar ${TSD}/TunerStudioMS.jar TunerStudioMS.jar
