@@ -14,8 +14,8 @@ architectures:
 
 apps:
   tunerstudio: 
-    command: sh $SNAP/launch
     extensions: [gnome-3-34] 
+    command: launch
     plugs:
       - network
       - home
@@ -29,28 +29,44 @@ apps:
       - desktop-legacy
       - browser-support
       - audio-playback
+      - pulseaudio  # compatibility with snapd <2.41
       
-  tunerstudio:
-    source: https://github.com/kz6fittycent/TunerStudio-snap
-    source-type: git
-    plugin: nil
-    
-    build-packages:
-      - openjdk-8-jre
-      - wget
-      - tar
-      - librxtx-java
-      
-    stage-packages:
-      - openjdk-8-jre
-      - librxtx-java
-      - fontconfig
-      - fontconfig-config
-      - libfontconfig1
-      - x11-xserver-utils
-      - curl
-      - tar
-
-  publish:
+parts:
+  launcher:
     plugin: dump
-    source: .
+    source: scripts
+    
+    tool:
+      plugin: nil     
+    
+      build-packages:
+        - openjdk-8-jre
+        - wget
+        - tar
+        - librxtx-java
+      
+      stage-packages:
+        - openjdk-8-jre
+        - librxtx-java
+        - fontconfig
+        - fontconfig-config
+        - libfontconfig1
+        - x11-xserver-utils
+        - curl
+        - tar
+    
+  # https://snapcraft-utils-library.readthedocs.io/en/latest/lib/cleanup.html
+  cleanup:
+    after:  # Make this part run last; list all your other parts here
+      - tool
+      - launcher
+    plugin: nil
+    build-snaps:  # List all content-snaps and base snaps you're using here
+      - core18
+      - gnome-3-28-1804
+    override-prime: |
+      set -eux
+      for snap in "core18" "gnome-3-28-1804"; do  # List all content-snaps and base snaps you're using here
+        cd "/snap/$snap/current" && find . -type f,l -exec rm -f "$SNAPCRAFT_PRIME/{}" \;
+      done
+    
