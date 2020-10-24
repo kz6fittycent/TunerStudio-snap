@@ -15,7 +15,7 @@ architectures:
 apps:
   tunerstudio: 
     extensions: [gnome-3-34] 
-    command: bash $SNAP/launch.sh
+    command: launch.sh
     plugs:
       - network
       - home
@@ -25,6 +25,9 @@ apps:
       - browser-support
       - audio-playback
       - pulseaudio  # compatibility with snapd <2.41
+          
+    environment:      
+      JAVA_HOME: JAVA_HOME=$SNAP/usr/lib/jvm/java-1.8.0-openjdk-amd64
       
 parts:
   launcher:
