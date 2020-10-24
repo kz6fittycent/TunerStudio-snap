@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=TunerStudio
+GenericName=TunerStudio
+Comment=A snap for TunerStudio
+Exec=tunerstudio
+Icon=${SNAP}/meta/gui/tunerstudio.png
+Terminal=false
+Type=Application
+StartupNotify=false
+Categories=Application;
+Keywords=tunerstudio;
