@@ -36,29 +36,28 @@ parts:
     plugin: dump
     source: scripts
     
-    game:
-      plugin: nil     
-    
-      build-packages:
-        - openjdk-8-jre
-        - wget
-        - tar
-        - librxtx-java
-      
-      stage-packages:
-        - openjdk-8-jre
-        - librxtx-java
-        - fontconfig
-        - fontconfig-config
-        - libfontconfig1
-        - x11-xserver-utils
-        - curl
-        - tar
+  tool:
+    plugin: nil     
+  
+    build-packages:
+      - openjdk-8-jre
+      - librxtx-java
+      - ca-certificates
+      - ca-certificates-java
+    stage-packages:
+      - openjdk-8-jre
+      - librxtx-java
+      - fontconfig
+      - fontconfig-config
+      - libfontconfig1
+      - x11-xserver-utils
+      - curl
+      - tar
     
   # https://snapcraft-utils-library.readthedocs.io/en/latest/lib/cleanup.html
   cleanup:
     after:  # Make this part run last; list all your other parts here
-      - game
+      - tool
       - launcher
     plugin: nil
     build-snaps:  # List all content-snaps and base snaps you're using here
@@ -69,4 +68,3 @@ parts:
       for snap in "core18" "gnome-3-28-1804"; do  # List all content-snaps and base snaps you're using here
         cd "/snap/$snap/current" && find . -type f,l -exec rm -f "$SNAPCRAFT_PRIME/{}" \;
       done
-    
