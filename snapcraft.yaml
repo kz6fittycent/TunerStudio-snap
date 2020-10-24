@@ -8,7 +8,7 @@ description: |
   After installing, run the following commands:
   
   sudo snap connect tunerstudio:raw-usb
-  sudo snap connect tunerstudio:removeable-media
+  sudo snap connect tunerstudio:removable-media
   
   This is NOT an officially supported snap from TunerStudio. It is basically an automated
   installer for the software on 64-bit Linux systems running snapd. 
