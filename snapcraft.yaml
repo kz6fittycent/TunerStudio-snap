@@ -15,7 +15,7 @@ architectures:
 apps:
   tunerstudio: 
     extensions: [gnome-3-34] 
-    command: bash $SNAP/launch
+    command: bash launch
     plugs:
       - network
       - home
