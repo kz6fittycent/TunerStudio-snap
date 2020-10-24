@@ -36,7 +36,7 @@ parts:
     plugin: dump
     source: scripts
     
-    tool:
+    game:
       plugin: nil     
     
       build-packages:
@@ -58,7 +58,7 @@ parts:
   # https://snapcraft-utils-library.readthedocs.io/en/latest/lib/cleanup.html
   cleanup:
     after:  # Make this part run last; list all your other parts here
-      - tool
+      - game
       - launcher
     plugin: nil
     build-snaps:  # List all content-snaps and base snaps you're using here
