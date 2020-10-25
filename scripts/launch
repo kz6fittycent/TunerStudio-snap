@@ -2,7 +2,8 @@
 
 # VARIABLES
 ########################################
-TSD="TunerStudioMS"
+SCR=$0
+TSD="${SCR%/*}"
 TSL="https://www.efianalytics.com/TunerStudio/download/TunerStudioMS_v3.1.04.tar.gz"
 TS="TunerStudio.tar.gz"
 SERIAL_DRIVER="${TSD}/lib/alternateLinuxDrivers/x86_64-linux:"
