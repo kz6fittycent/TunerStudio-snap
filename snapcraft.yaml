@@ -20,6 +20,10 @@ confinement: strict
 architectures:
   - build-on: amd64
 
+layout:
+  /usr/bin/xprop:
+    bind-file: $SNAP/usr/bin/xprop
+
 apps:
   tunerstudio: 
     extensions: 
@@ -34,6 +38,7 @@ apps:
       - browser-support
       - audio-playback
       - pulseaudio  # compatibility with snapd <2.41
+      - x11
     environment:      
       JAVA_HOME: $SNAP/usr/lib/jvm/java-1.8.0-openjdk-amd64
 
