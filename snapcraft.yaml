@@ -36,12 +36,15 @@ apps:
       - pulseaudio  # compatibility with snapd <2.41
     environment:      
       JAVA_HOME: $SNAP/usr/lib/jvm/java-1.8.0-openjdk-amd64
-      
+
 parts:
   launcher:
     plugin: dump
     source: scripts
-    
+          
+    override-build: |
+      chmod a+x $SNAPCRAFT_PART_INSTALL/launch
+      
   tool:
     plugin: nil
     build-packages:
