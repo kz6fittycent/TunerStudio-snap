@@ -24,7 +24,7 @@ layout:
   /usr/bin/xprop:
     bind-file: $SNAP/usr/bin/xprop
   /usr/local/bin:
-    symlink: $SNAP_USER_DATA/TunerStudioMS
+    bind: $SNAP_USER_DATA/TunerStudioMS
 
 apps:
   tunerstudio: 
