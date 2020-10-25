@@ -31,6 +31,7 @@ apps:
     command: desktop-launch launch
     plugs:
       - network
+      - network-bind
       - home
       - raw-usb
       - removable-media
@@ -39,6 +40,8 @@ apps:
       - audio-playback
       - pulseaudio  # compatibility with snapd <2.41
       - x11
+      - desktop
+      - desktop-legacy
     environment:      
       JAVA_HOME: $SNAP/usr/lib/jvm/java-1.8.0-openjdk-amd64
 
