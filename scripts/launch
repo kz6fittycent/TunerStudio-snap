@@ -17,6 +17,8 @@ export PATH=$JAVA_HOME/bin:$JAVA_HOME/jre/bin:$PATH
 
 cd $SNAP_USER_DATA
 
+ln -s $PWD $SNAP/usr/local/bin
+
 # GET TunerStudio if it doesn't exist then START
 
 if [ -e "${TSD}" ];
