@@ -12,6 +12,7 @@ A snap for TunerStudio
   After installing, run the following commands:
   
   `sudo snap connect tunerstudio:raw-usb`
+  
   `sudo snap connect tunerstudio:removable-media`
   
   This is NOT an officially supported snap from TunerStudio. It is basically an automated
