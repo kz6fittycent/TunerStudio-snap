@@ -17,8 +17,6 @@ export PATH=$JAVA_HOME/bin:$JAVA_HOME/jre/bin:$PATH
 
 cd $SNAP_USER_DATA
 
-
-
 # GET TunerStudio if it doesn't exist then START
 
 if [ -e "${TSD}" ];
@@ -30,10 +28,6 @@ then
   
   # START
   java -Dcom.ibm.crypto.provider.DoRSATypeChecking=false -Djava.library.path=${SERIAL_DRIVER}lib -cp ".:lib:plugins" -jar ${TSD}/TunerStudioMS.jar
-  
-  # TEST
-#  cd ${TSD}
-#  ./TunerStudio.sh
   
 else
 
@@ -47,9 +41,5 @@ else
   # START
   java -Dcom.ibm.crypto.provider.DoRSATypeChecking=false -Djava.library.path=${SERIAL_DRIVER}lib -cp ".:lib:plugins" -jar ${TSD}/TunerStudioMS.jar TunerStudioMS.jar
  
-  # TEST
-#  cd ${TSD}
-#  chmod a+x TunerStudio.sh  
-#  ./TunerStudio.sh
-  
+
 fi
