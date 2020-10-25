@@ -34,7 +34,6 @@ apps:
       - browser-support
       - audio-playback
       - pulseaudio  # compatibility with snapd <2.41
-          
     environment:      
       JAVA_HOME: $SNAP/usr/lib/jvm/java-1.8.0-openjdk-amd64
       
@@ -44,7 +43,7 @@ parts:
     source: scripts
     
   tool:
-    plugin: nil      
+    plugin: nil
     build-packages:
       - openjdk-8-jre
       - librxtx-java
