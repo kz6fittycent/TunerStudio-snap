@@ -42,9 +42,6 @@ parts:
     plugin: dump
     source: scripts
           
-    override-build: |
-      chmod a+x $SNAPCRAFT_PART_INSTALL/launch
-      
   tool:
     plugin: nil
     build-packages:
