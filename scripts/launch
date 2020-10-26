@@ -27,7 +27,7 @@ then
   rm -rf ${TS}
   
   # START
-  java -Dcom.ibm.crypto.provider.DoRSATypeChecking=false -Djava.library.path=${SERIAL_DRIVER}lib -cp ".:lib:plugins" -Dproperties.location="${TSD}TunerStudio.properties" -jar ${TSD}/TunerStudioMS.jar
+  java -Dcom.ibm.crypto.provider.DoRSATypeChecking=false -Djava.library.path=${SERIAL_DRIVER}lib -cp ".:lib:plugins" -Dproperties.location="${TSD}/TunerStudio.properties" -jar ${TSD}/TunerStudioMS.jar
   
 else
 
@@ -39,7 +39,7 @@ else
   rm -rf ${TS}
   
   # START
-  java -Dcom.ibm.crypto.provider.DoRSATypeChecking=false -Djava.library.path=${SERIAL_DRIVER}lib -cp ".:lib:plugins" -Dproperties.location="${TSD}TunerStudio.properties" -jar ${TSD}/TunerStudioMS.jar TunerStudioMS.jar
+  java -Dcom.ibm.crypto.provider.DoRSATypeChecking=false -Djava.library.path=${SERIAL_DRIVER}lib -cp ".:lib:plugins" -Dproperties.location="${TSD}/TunerStudio.properties" -jar ${TSD}/TunerStudioMS.jar TunerStudioMS.jar
  
 
 fi
