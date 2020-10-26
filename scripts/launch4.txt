@@ -2,9 +2,12 @@
 
 # MAIN VARIABLES
 ########################################
+SCR=$0
+LAST_PATH="$PWD"
 TSD="${SNAP_USER_COMMON}/TunerStudioMS"
 TSL="https://www.efianalytics.com/TunerStudio/download/TunerStudioMS_v3.1.04.tar.gz"
 TS="TunerStudio.tar.gz"
+SERIAL_DRIVER="${TSD}/lib/alternateLinuxDrivers/x86_64-linux:"
 ########################################
 
 # JAVA PATH
@@ -12,6 +15,8 @@ TS="TunerStudio.tar.gz"
 export JAVA_HOME=$SNAP/usr/lib/jvm/java-1.8.0-openjdk-$SNAP_ARCH
 export PATH=$JAVA_HOME/bin:$JAVA_HOME/jre/bin:$PATH
 ########################################
+
+cd ${TSD}
 
 # GET TunerStudio if it doesn't exist then START
 
@@ -23,8 +28,7 @@ then
   rm -rf ${TS}
   
   # START
-  cd ${TSD}
-  sh TunerStudio.sh
+  java -Dcom.ibm.crypto.provider.DoRSATypeChecking=false -Djava.library.path=${SERIAL_DRIVER}lib -cp ".:lib:plugins" -jar ${TSD}/TunerStudioMS.jar
 
 else
 
@@ -36,6 +40,6 @@ else
   rm -rf ${TS}
   
   # START
-  cd ${TSD}
-  sh TunerStudio.sh
+  java -Dcom.ibm.crypto.provider.DoRSATypeChecking=false -Djava.library.path=${SERIAL_DRIVER}lib -cp ".:lib:plugins" -jar ${TSD}/TunerStudioMS.jar TunerStudioMS.jar
+
 fi
