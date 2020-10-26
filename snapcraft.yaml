@@ -28,7 +28,7 @@ apps:
   tunerstudio: 
     extensions: 
       - gnome-3-34
-    command: desktop-launch launch
+    command: launch
     plugs:
       - network
       - network-bind
