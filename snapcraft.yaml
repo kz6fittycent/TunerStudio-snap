@@ -9,6 +9,8 @@ description: |
   
   sudo snap connect tunerstudio:raw-usb
   sudo snap connect tunerstudio:removable-media
+  sudo snap connect tunerstudio:bluez
+  sudo snap connect tunerstudio:bluetooth-control
   
   This is NOT an officially supported snap from TunerStudio. It is basically an automated
   installer for the software on 64-bit Linux systems running snapd. 
@@ -42,15 +44,13 @@ apps:
       - x11
       - desktop
       - desktop-legacy
+      - bluez
+      - bluetooth-control
     environment: 
       JAVA_HOME: $SNAP/usr/lib/jvm/java-1.8.0-openjdk-amd64   
       PATH: $JAVA_HOME/bin:$JAVA_HOME/jre/bin:$PATH
       
 parts:
-  launcher:
-    plugin: dump
-    source: scripts
-            
   tool:
     plugin: nil
     build-packages:
@@ -58,6 +58,7 @@ parts:
       - librxtx-java
       - ca-certificates
       - ca-certificates-java
+      
     stage-packages:
       - openjdk-8-jre
       - librxtx-java
@@ -67,18 +68,22 @@ parts:
       - x11-xserver-utils
       - curl
       - tar
+      - python3
+      
+  launcher:
+    plugin: dump
+    source: scripts
     
-  # https://snapcraft-utils-library.readthedocs.io/en/latest/lib/cleanup.html
   cleanup:
-    after:  # Make this part run last; list all your other parts here
+    after:
       - tool
       - launcher
     plugin: nil
-    build-snaps:  # List all content-snaps and base snaps you're using here
+    build-snaps:
       - core18
       - gnome-3-28-1804
     override-prime: |
       set -eux
       for snap in "core18" "gnome-3-28-1804"; do  # List all content-snaps and base snaps you're using here
         cd "/snap/$snap/current" && find . -type f,l -exec rm -f "$SNAPCRAFT_PRIME/{}" \;
-      done
+      done      

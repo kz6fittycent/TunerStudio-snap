@@ -1,41 +1,12 @@
-#!/bin/sh
+#!/bin/bash
 
-# MAIN VARIABLES
-########################################
-TSD="${SNAP_USER_CURRENT}/TunerStudioMS"
-TSL="https://www.efianalytics.com/TunerStudio/download/TunerStudioMS_v3.1.04.tar.gz"
-TS="TunerStudio.tar.gz"
-########################################
+set -e
+(
+	cd $SNAP_USER_DATA
+	$SNAP/download-ms.py
+)
 
-# JAVA PATH
-########################################
-export JAVA_HOME=$SNAP/usr/lib/jvm/java-1.8.0-openjdk-$SNAP_ARCH
-export PATH=$JAVA_HOME/bin:$JAVA_HOME/jre/bin:$PATH
-########################################
-
-# GET TunerStudio if it doesn't exist then START
-
-if [ -e "${TSD}" ];
-
-then
-
-  # CLEAN UP, JIC
-  rm -rf ${TS}
-  
-  # START
-  cd ${TSD}
-  sh TunerStudio.sh
-
-else
-
-  # GET TunerStudio
-  curl -so ${TS} ${TSL}
-  tar xvzf ${TS}
-  
-  # CLEAN UP, JIC
-  rm -rf ${TS}
-  
-  # START
-  cd ${TSD}
-  sh TunerStudio.sh
-fi
+set -e
+(
+	$SNAP_USER_DATA/TunerStudioMS/./TunerStudio.sh
+)
