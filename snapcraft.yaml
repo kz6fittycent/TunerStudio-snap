@@ -3,7 +3,9 @@ version: 3.1.04
 summary: TunerStudio MS - an advanced MegaSquirt Tuning Software
 description: |
   TunerStudio MS, the most most advanced and refined MegaSquirt Tuning software available.
-  The registered and Lite! editions are the same installer.
+  The registered and Lite! editions are the same installer. 
+  
+  BETA edition.
 
   After installing, run the following commands:
   
@@ -37,7 +39,6 @@ apps:
       - home
       - raw-usb
       - removable-media
-      - opengl
       - browser-support
       - audio-playback
       - pulseaudio  # compatibility with snapd <2.41
@@ -49,6 +50,7 @@ apps:
     environment: 
       JAVA_HOME: $SNAP/usr/lib/jvm/java-1.8.0-openjdk-amd64   
       PATH: $JAVA_HOME/bin:$JAVA_HOME/jre/bin:$PATH
+      PYTHONPATH: $SNAP_DESKTOP_RUNTIME/usr/lib/python3.6/site-packages
       
 parts:
   tool:
