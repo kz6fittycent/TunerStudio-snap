@@ -21,18 +21,19 @@ base: core18
 grade: stable
 confinement: strict
 
+assumes: 
+  - command-chain
+  
 architectures:
   - build-on: amd64
-
-layout:
-  /usr/bin/xprop:
-    bind-file: $SNAP/usr/bin/xprop
 
 apps:
   tunerstudio: 
     extensions: 
       - gnome-3-34
     command: launch
+    command-chain: 
+      - bin/homeishome-launch    
     plugs:
       - network
       - network-bind
@@ -60,6 +61,11 @@ parts:
       - librxtx-java
       - ca-certificates
       - ca-certificates-java
+      
+  homeishome-launch:
+    plugin: nil
+    stage-snaps:
+      - homeishome-launch         
       
     stage-packages:
       - openjdk-8-jre
