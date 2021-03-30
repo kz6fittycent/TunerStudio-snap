@@ -56,7 +56,7 @@ parts:
   tool:
     plugin: nil
     build-packages:
-      - openjdk-8-jre-headless 
+      - openjdk-8-jre
       - librxtx-java
       - ca-certificates
       - ca-certificates-java
@@ -67,7 +67,7 @@ parts:
       - homeishome-launch         
       
     stage-packages:
-      - openjdk-8-jre-headless 
+      - openjdk-8-jre
       - librxtx-java
       - fontconfig
       - fontconfig-config
