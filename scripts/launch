@@ -31,7 +31,6 @@ set -e
 
 set -e
 (
-    ln -s ${TSD} $HOME
 	cd ${TSD} 
 	./TunerStudio.sh
 )
