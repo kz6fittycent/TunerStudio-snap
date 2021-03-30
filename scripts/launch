@@ -2,7 +2,7 @@
 
 #VARS
 ####################
-TSD="${SNAP_USER_DATA}/TunerStudioMS"
+TSD="${SNAP_USER_COMMON}/TunerStudioMS"
 SERIAL_DRIVER="${TSD}/lib/alternateLinuxDrivers/x86_64-linux:"
 ####################
 
