@@ -81,6 +81,7 @@ parts:
       - ca-certificates
       - ca-certificates-java    
       - libpango-1.0-0
+      - libgdk-pixbuf2.0-0
       
   launcher:
     plugin: dump
