@@ -51,7 +51,7 @@ apps:
       - bluetooth-control
     environment: 
       JAVA_HOME: $SNAP/usr/lib/jvm/java-1.8.0-openjdk-amd64   
-      PYTHONPATH: $SNAP_DESKTOP_RUNTIME/usr/lib/python3.6/dist-packages
+      PYTHONPATH: $SNAP_DESKTOP_RUNTIME/usr/lib/python3.6/site-packages
       
 parts:
   tool:
