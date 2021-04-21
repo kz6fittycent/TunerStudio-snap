@@ -19,7 +19,7 @@ export PATH=$JAVA_HOME/bin:$JAVA_HOME/jre/bin:$PATH
 
 set -e
 (
-	cd ${TSD}
+	cd ${SNAP_USER_DATA}
 	$SNAP/download-ms.py
 )
 
