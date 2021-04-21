@@ -17,9 +17,10 @@ description: |
   This is NOT an officially supported snap from TunerStudio. It is basically an automated
   installer for the software on 64-bit Linux systems running snapd. 
 
-base: core18
+base: core20
 grade: stable
 confinement: strict
+compression: lzo
 
 assumes: 
   - command-chain
@@ -30,7 +31,7 @@ architectures:
 apps:
   tunerstudio: 
     extensions: 
-      - gnome-3-34
+      - gnome-3-38
     command: launch
     command-chain: 
       - bin/homeishome-launch    
@@ -90,11 +91,11 @@ parts:
       - tool
       - launcher
     plugin: nil
-    build-snaps:
-      - core18
-      - gnome-3-28-1804
+    build-snaps: 
+      - core20
+      - gnome-3-38-2004
     override-prime: |
       set -eux
-      for snap in "core18" "gnome-3-28-1804"; do  # List all content-snaps and base snaps you're using here
+      for snap in "core20" "gnome-3-38-2004"; do  # List all content-snaps and base snaps you're using here
         cd "/snap/$snap/current" && find . -type f,l -exec rm -f "$SNAPCRAFT_PRIME/{}" \;
-      done      
+      done  
