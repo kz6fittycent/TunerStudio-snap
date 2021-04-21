@@ -2,7 +2,7 @@
 
 #VARS
 ####################
-TSD="${SNAP_USER_COMMON}/TunerStudioMS"
+TSD="${SNAP_USER_DATA}/TunerStudioMS"
 SERIAL_DRIVER="${TSD}/lib/alternateLinuxDrivers/x86_64-linux:"
 ####################
 
@@ -19,7 +19,7 @@ export PATH=$JAVA_HOME/bin:$JAVA_HOME/jre/bin:$PATH
 
 set -e
 (
-	cd $SNAP_USER_COMMON
+	cd ${TSD}
 	$SNAP/download-ms.py
 )
 
