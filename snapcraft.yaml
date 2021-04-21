@@ -78,6 +78,7 @@ parts:
       - tar
       - python3
       - python3-requests
+      - python3-gi
       - ca-certificates
       - ca-certificates-java    
       - libpango-1.0-0
