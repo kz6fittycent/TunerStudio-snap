@@ -20,7 +20,7 @@ export PATH=$JAVA_HOME/bin:$JAVA_HOME/jre/bin:$PATH
 set -e
 (
 	cd $SNAP_USER_DATA
-	usr/bin/python3 $SNAP/download-ms.py
+	python3 $SNAP/download-ms.py
 )
 
 #set -e
