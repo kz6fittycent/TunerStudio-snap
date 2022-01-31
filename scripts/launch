@@ -1,19 +1,8 @@
 #!/bin/bash
 
-#VARS
-####################
-TSD="${SNAP_USER_DATA}/TunerStudioMS"
-SERIAL_DRIVER="${TSD}/lib/alternateLinuxDrivers/x86_64-linux:"
-####################
-
-# JAVA PATH
-########################################
-export JAVA_HOME=$SNAP/usr/lib/jvm/java-1.8.0-openjdk-$SNAP_ARCH
-export PATH=$JAVA_HOME/bin:$JAVA_HOME/jre/bin:$PATH
-########################################
-
-
-$SNAP/download-ms.py
-
-cd $SNAP_USER_DATA && ./TunerStudioMS/TunerStudio.sh
-
+set -e 
+(
+	cd $SNAP_USER_DATA
+        $SNAP/./download-ms.py
+        $SNAP_USER_DATA/TunerStudioMS/./TunerStudio.sh
+)
