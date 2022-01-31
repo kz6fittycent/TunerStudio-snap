@@ -10,27 +10,10 @@ SERIAL_DRIVER="${TSD}/lib/alternateLinuxDrivers/x86_64-linux:"
 ########################################
 export JAVA_HOME=$SNAP/usr/lib/jvm/java-1.8.0-openjdk-$SNAP_ARCH
 export PATH=$JAVA_HOME/bin:$JAVA_HOME/jre/bin:$PATH
-#export DESKTOP_SESSION=gnome
-#export XDG_SESSION_DESKTOP=gnome
-#export XDG_CURRENT_DESKTOP=GNOME
-#export _JAVA_OPTIONS='-Dsun.java2d.xrender=true -Dprism.useFontConfig=false -Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel -Dswing.crossplatformlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
-#export JAVA_FONTS=$SNAP/usr/share/fonts/truetype
 ########################################
 
-set -e
-(
-	cd $SNAP_USER_DATA
-	$SNAP/download-ms.py
-)
 
-#set -e
-#(
-#    ln -s ${TSD} $SNAP/usr/local/bin
-#	java -Dcom.ibm.crypto.provider.DoRSATypeChecking=false -Duser.home=$SNAP_USER_DATA/TunerStudioMS -Djava.settings.path=${TSD} -Djava.library.path=${SERIAL_DRIVER}lib -cp ".:lib:plugins" -jar ${TSD}/TunerStudioMS.jar "$@"
-#)
+$SNAP/download-ms.py
 
-set -e
-(
-	cd ${TSD} 
-	./TunerStudio.sh
-)
+cd $SNAP_USER_DATA && ./TunerStudioMS/TunerStudio.sh
+
