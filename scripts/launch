@@ -1,9 +1,21 @@
-#!/bin/bash
+#!/bin/sh
 
-set -e 
-(
-	cd $SNAP_USER_DATA
-        $SNAP/download-ms.py
-        cd $SNAP_USER_DATA/TunerStudioMS/
-        ./TunerStudio.sh
-)
+# JAVA 
+export JAVA_HOME=$SNAP/usr/lib/jvm/java-1.11.0-openjdk-$SNAP_ARCH
+export PATH=$JAVA_HOME/bin:$JAVA_HOME/jre/bin:$PATH
+
+# VARS
+SCRIPT=$0
+SERIAL_DRIVER="lib/alternateLinuxDrivers/$SNAP_ARCH-linux:"
+
+# Execute
+cd $SNAP/bin/TunerStudioMS/
+
+java -Dcom.ibm.crypto.provider.DoRSATypeChecking=false -Djava.library.path=${SERIAL_DRIVER}lib -cp ".:lib:plugins" -jar TunerStudioMS.jar $1
+RESULT=$?
+
+if [ -d "$LAST_PATH" ]; then
+	cd "$LAST_PATH"
+fi
+
+exit $RESULT

@@ -1,5 +1,5 @@
 name: tunerstudio
-version: 3.1.06
+version: beta
 summary: TunerStudio MS - an advanced MegaSquirt Tuning Software
 description: |
   TunerStudio MS, the most most advanced and refined MegaSquirt Tuning software available.
@@ -14,8 +14,7 @@ description: |
   sudo snap connect tunerstudio:bluez
   sudo snap connect tunerstudio:bluetooth-control
   
-  This is NOT an officially supported snap from TunerStudio. It is basically an automated
-  installer for the software on 64-bit Linux systems running snapd. 
+  This is NOT an officially supported snap from TunerStudio. 
 
 base: core20
 grade: stable
@@ -50,44 +49,52 @@ apps:
       - bluez
       - bluetooth-control
     environment: 
-      JAVA_HOME: $SNAP/usr/lib/jvm/java-1.8.0-openjdk-amd64   
-      PYTHONPATH: $SNAP_DESKTOP_RUNTIME/usr/lib/python3.6/dist-packages
+      JAVA_HOME: $SNAP/usr/lib/jvm/java-11-openjdk-amd64
+      JRE_HOME: $SNAP/usr/lib/jvm/java-11-openjdk-amd64/jre  
       
 parts:
-  tool:
+  tool:    
     plugin: nil
+    override-build: | 
+      mkdir -p BUILD
+      cd BUILD/
+      wget -O tunerstudio.tar.gz https://www.efianalytics.com/TunerStudio/beta/TunerStudioMS_v3.1.08.12_Beta.tar.gz
+      tar -xzvf tunerstudio.tar.gz
+      rm tunerstudio.tar.gz
+      mkdir -p $SNAPCRAFT_PART_INSTALL/bin/
+      cp -r * $SNAPCRAFT_PART_INSTALL/bin/
+
     build-packages:
-      - openjdk-8-jdk
-      - librxtx-java
-      - ca-certificates
-      - ca-certificates-java
-      
-  homeishome-launch:
-    plugin: nil
-    stage-snaps:
-      - homeishome-launch         
+      - wget
+      - tar
+      - awk
       
     stage-packages:
-      - openjdk-8-jdk
+      - openjdk-11-jdk
+      - openjdk-11-jre
       - librxtx-java
       - fontconfig
       - fontconfig-config
       - libfontconfig1
       - x11-xserver-utils
-      - curl
-      - tar
-      - python3
-      - python3-requests
-      - python3-gi
-      - ca-certificates
-      - ca-certificates-java    
-      - libpango-1.0-0
-      - libgdk-pixbuf2.0-0
-      
+      - libgtk-3-dev   
+      - ca-certificates-java
+      - ca-certificates               
+
+    stage:
+    - -usr/lib/jvm/java-11-openjdk-*/lib/security/cacerts
+    - -usr/lib/jvm/java-11-openjdk-*/lib/security/blacklisted.certs 
+
+  homeishome-launch:
+    plugin: nil
+    stage-snaps:
+      - homeishome-launch         
+            
   launcher:
     plugin: dump
     source: scripts
     
+   
   cleanup:
     after:
       - tool
