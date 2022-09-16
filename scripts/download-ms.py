@@ -11,7 +11,7 @@ import hashlib
 import os.path
 import subprocess
 
-DOWNLOAD_LINK = "https://www.tunerstudio.com/downloads2/TunerStudioMS_v3.1.06.tar.gz"
+DOWNLOAD_LINK = "https://www.efianalytics.com/TunerStudio/beta/TunerStudioMS_v3.1.08.12_Beta.tar.gz"
 DOWNLOAD_FILE = "TunerStudioMS.tar.gz"
 RESULT_PATH = "TunerStudioMS"
 
