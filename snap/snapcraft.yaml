@@ -1,5 +1,5 @@
 name: tunerstudio
-version: beta
+adopt-info: tunerstudio
 summary: TunerStudio MS - an advanced MegaSquirt Tuning Software
 description: |
   TunerStudio MS, the most most advanced and refined MegaSquirt Tuning software available.
@@ -53,21 +53,32 @@ apps:
       JRE_HOME: $SNAP/usr/lib/jvm/java-11-openjdk-amd64/jre  
       
 parts:
-  tool:    
+  tunerstudio:    
     plugin: nil
-    override-build: | 
+    override-build: |     
+      #VARS
+      ################################
+      TAR=$(curl -s "https://www.efianalytics.com/TunerStudio/beta/" | grep "tar.gz" | head -n1 | cut -d '"' -f2)
+      ################################
       mkdir -p BUILD
       cd BUILD/
-      wget -O tunerstudio.tar.gz https://www.efianalytics.com/TunerStudio/beta/TunerStudioMS_v3.1.08.12_Beta.tar.gz
+      wget -O tunerstudio.tar.gz https://www.efianalytics.com/TunerStudio/beta/${TAR}
       tar -xzvf tunerstudio.tar.gz
       rm tunerstudio.tar.gz
       mkdir -p $SNAPCRAFT_PART_INSTALL/bin/
       cp -r * $SNAPCRAFT_PART_INSTALL/bin/
 
+    override-pull: |    
+      snapcraftctl pull
+      snapcraftctl set-version $(curl -s "https://www.efianalytics.com/TunerStudio/beta/" | grep "tar.gz" | head -n1 | cut -d '"' -f2 | cut -d "_" -f2 | sed 's/v//')
+      
+      
     build-packages:
       - wget
       - tar
       - awk
+      - sed
+      - curl
       
     stage-packages:
       - openjdk-11-jdk
@@ -97,7 +108,7 @@ parts:
    
   cleanup:
     after:
-      - tool
+      - tunerstudio
       - launcher
     plugin: nil
     build-snaps: 
