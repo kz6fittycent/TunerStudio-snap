@@ -76,7 +76,7 @@ parts:
     build-packages:
       - wget
       - tar
-      - awk
+      - gawk
       - sed
       - curl
       
