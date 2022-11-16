@@ -72,7 +72,6 @@ parts:
       snapcraftctl pull
       snapcraftctl set-version $(curl -s "https://www.efianalytics.com/TunerStudio/beta/" | grep "tar.gz" | head -n1 | cut -d '"' -f2 | cut -d "_" -f2 | sed 's/v//')
       
-      
     build-packages:
       - wget
       - tar
@@ -104,8 +103,7 @@ parts:
   launcher:
     plugin: dump
     source: scripts
-    
-   
+       
   cleanup:
     after:
       - tunerstudio
@@ -113,5 +111,4 @@ parts:
     plugin: nil
     build-snaps: 
       - core20
-      - gnome-3-38-2004
-    
+      - gnome-3-38-2004    
