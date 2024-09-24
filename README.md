@@ -1,4 +1,4 @@
-[![tunerstudio](https://snapcraft.io/tunerstudio/badge.svg)](https://snapcraft.io/tunerstudio)
+[![tunerstudio](https://snapcraft.io/tunerstudio/badge.svg)](https://snapcraft.io/tunerstudio)[![🧪 Snap Builds](https://github.com/kz6fittycent/TunerStudio-snap/actions/workflows/test-snap-can-build.yml/badge.svg)](https://github.com/kz6fittycent/TunerStudio-snap/actions/workflows/test-snap-can-build.yml)[![Periodic Builds and Scans](https://github.com/kz6fittycent/TunerStudio-snap/actions/workflows/periodic_builds.yml/badge.svg)](https://github.com/kz6fittycent/TunerStudio-snap/actions/workflows/periodic_builds.yml)
 
 
 # TunerStudio-snap
