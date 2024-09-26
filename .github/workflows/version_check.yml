@@ -1,0 +1,29 @@
+name: Check for new releases
+
+on:
+  schedule:
+  - cron: "0 * * * *"
+
+jobs:
+  new-release:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: get-latest-version
+      run: |
+        sudo apt-get update
+        sudo apt-get install -yqq snapd
+        VERSION=$(curl -s "https://www.efianalytics.com/TunerStudio/beta/" | grep "tar.gz" | head -n1 | cut -d '"' -f2 | cut -d "_" -f2 | sed 's/v//')
+        EDGEVER="$(snap info tunerstudio | awk '$1 == "latest/edge:" { print $2 }')"
+        if [ "$VERSION" != "$EDGEVER" ]; then
+          echo "$(date -u --rfc-3339=seconds) Version $VERSION" >> .build.stamp
+        fi
+        
+    - uses: stefanzweifel/git-auto-commit-action@v4
+      with:
+        file_pattern: .build.stamp
+        commit_message: Trigger build for new version
+        branch: main
+      env:
+        GITHUB_TOKEN: ${{ secrets.KZ6FITTYCENT }}
