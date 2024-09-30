@@ -30,16 +30,11 @@ source-code: https://github.com/kz6fittycent/TunerStudio-snap
 architectures:
   - build-on: amd64
 
-assumes: 
-  - command-chain
-
 apps:
   tunerstudio: 
     extensions: 
       - gnome
     command: launch
-    command-chain: 
-      - bin/homeishome-launch    
     plugs:
       - network
       - network-bind
@@ -100,11 +95,6 @@ parts:
     stage:
     - -usr/lib/jvm/java-11-openjdk-*/lib/security/cacerts
     - -usr/lib/jvm/java-11-openjdk-*/lib/security/blacklisted.certs 
-
-  homeishome-launch:
-    plugin: nil
-    stage-snaps:
-      - homeishome-launch         
             
   launcher:
     plugin: dump
