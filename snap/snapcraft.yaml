@@ -16,21 +16,27 @@ description: |
   
   This is NOT an officially supported snap from TunerStudio. 
 
-base: core20
+base: core22
 grade: stable
 confinement: strict
 compression: lzo
+icon: snap/gui/tunerstudio.png
+license: Proprietary
+contact: https://www.tunerstudio.com/
+website: https://www.tunerstudio.com/
+issues: https://github.com/kz6fittycent/TunerStudio-snap/issues
+source-code: https://github.com/kz6fittycent/TunerStudio-snap
+
+architectures:
+  - build-on: amd64
 
 assumes: 
   - command-chain
-  
-architectures:
-  - build-on: amd64
 
 apps:
   tunerstudio: 
     extensions: 
-      - gnome-3-38
+      - gnome
     command: launch
     command-chain: 
       - bin/homeishome-launch    
@@ -65,12 +71,12 @@ parts:
       wget -O tunerstudio.tar.gz https://www.efianalytics.com/TunerStudio/beta/${TAR}
       tar -xzvf tunerstudio.tar.gz
       rm tunerstudio.tar.gz
-      mkdir -p $SNAPCRAFT_PART_INSTALL/bin/
-      cp -r * $SNAPCRAFT_PART_INSTALL/bin/
+      mkdir -p $CRAFT_PART_INSTALL/bin/
+      cp -r * $CRAFT_PART_INSTALL/bin/
 
     override-pull: |    
-      snapcraftctl pull
-      snapcraftctl set-version $(curl -s "https://www.efianalytics.com/TunerStudio/beta/" | grep "tar.gz" | head -n1 | cut -d '"' -f2 | cut -d "_" -f2 | sed 's/v//')
+      craftctl default
+      craftctl set version=$(curl -s "https://www.efianalytics.com/TunerStudio/beta/" | grep "tar.gz" | head -n1 | cut -d '"' -f2 | cut -d "_" -f2 | sed 's/v//')
       
     build-packages:
       - wget
@@ -110,5 +116,4 @@ parts:
       - launcher
     plugin: nil
     build-snaps: 
-      - core20
-      - gnome-3-38-2004    
+      - core22
