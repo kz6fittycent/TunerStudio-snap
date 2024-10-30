@@ -81,8 +81,8 @@ parts:
       - curl
       
     stage-packages:
-      - openjdk-11-jdk
-      - openjdk-11-jre
+      - openjdk-8-jdk
+      - openjdk-8-jre
       - librxtx-java
       - fontconfig
       - fontconfig-config
@@ -93,8 +93,8 @@ parts:
       - ca-certificates               
 
     stage:
-    - -usr/lib/jvm/java-11-openjdk-*/lib/security/cacerts
-    - -usr/lib/jvm/java-11-openjdk-*/lib/security/blacklisted.certs 
+    - -usr/lib/jvm/java-8-openjdk-*/lib/security/cacerts
+    - -usr/lib/jvm/java-8-openjdk-*/lib/security/blacklisted.certs 
             
   launcher:
     plugin: dump
