@@ -5,8 +5,6 @@ description: |
   TunerStudio MS, the most most advanced and refined MegaSquirt Tuning software available.
   The registered and Lite! editions are the same installer. 
   
-  BETA edition.
-
   After installing, run the following commands:
   
   sudo snap connect tunerstudio:raw-usb
@@ -16,7 +14,7 @@ description: |
   
   This is NOT an officially supported snap from TunerStudio. 
 
-base: core22
+base: core24
 grade: stable
 confinement: strict
 compression: lzo
@@ -27,8 +25,10 @@ website: https://www.tunerstudio.com/
 issues: https://github.com/kz6fittycent/TunerStudio-snap/issues
 source-code: https://github.com/kz6fittycent/TunerStudio-snap
 
-architectures:
-  - build-on: amd64
+platforms:
+  amd64:
+    build-on: [amd64]
+    build-for: [amd64]
 
 apps:
   tunerstudio: 
@@ -59,7 +59,7 @@ parts:
     override-build: |     
       #VARS
       ################################
-      TAR=$(curl -s "https://www.efianalytics.com/TunerStudio/beta/" | grep "tar.gz" | head -n1 | cut -d '"' -f2)
+      TAR=$(curl -s "https://www.efianalytics.com/TunerStudio/download/" | grep "tar.gz" | head -n1 | cut -d '"' -f2)
       ################################
       mkdir -p BUILD
       cd BUILD/
@@ -71,7 +71,7 @@ parts:
 
     override-pull: |    
       craftctl default
-      craftctl set version=$(curl -s "https://www.efianalytics.com/TunerStudio/beta/" | grep "tar.gz" | head -n1 | cut -d '"' -f2 | cut -d "_" -f2 | sed 's/v//')
+      craftctl set version=$(curl -s "https://www.efianalytics.com/TunerStudio/download/" | grep "tar.gz" | head -n1 | cut -d '"' -f2 | cut -d "_" -f2 | sed 's/v//' | sed 's/.tar.gz//')
       
     build-packages:
       - wget
@@ -106,4 +106,4 @@ parts:
       - launcher
     plugin: nil
     build-snaps: 
-      - core22
+      - core24
