@@ -63,7 +63,7 @@ parts:
       ################################
       mkdir -p BUILD
       cd BUILD/
-      wget -O tunerstudio.tar.gz https://www.efianalytics.com/TunerStudio/beta/${TAR}
+      wget -O tunerstudio.tar.gz https://www.efianalytics.com/TunerStudio/download/${TAR}
       tar -xzvf tunerstudio.tar.gz
       rm tunerstudio.tar.gz
       mkdir -p $CRAFT_PART_INSTALL/bin/
