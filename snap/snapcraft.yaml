@@ -50,8 +50,8 @@ apps:
       - bluez
       - bluetooth-control
     environment: 
-      JAVA_HOME: $SNAP/usr/lib/jvm/java-11-openjdk-amd64
-      JRE_HOME: $SNAP/usr/lib/jvm/java-11-openjdk-amd64/jre  
+      JAVA_HOME: $SNAP/usr/lib/jvm/java-8-openjdk-amd64
+      JRE_HOME: $SNAP/usr/lib/jvm/java-8-openjdk-amd64/jre  
       
 parts:
   tunerstudio:    
