@@ -32,6 +32,7 @@ platforms:
 
 apps:
   tunerstudio: 
+  after: [corretto]
     extensions: 
       - gnome
     command: launch
@@ -79,10 +80,9 @@ parts:
       - gawk
       - sed
       - curl
+      - java-common
       
     stage-packages:
-      - openjdk-11-jdk
-      - openjdk-11-jre
       - librxtx-java
       - fontconfig
       - fontconfig-config
@@ -95,7 +95,11 @@ parts:
     stage:
     - -usr/lib/jvm/java-11-openjdk-*/lib/security/cacerts
     - -usr/lib/jvm/java-11-openjdk-*/lib/security/blacklisted.certs 
-            
+  
+  corretto:
+    plugin: dump
+    source: https://corretto.aws/downloads/latest/amazon-corretto-11-x64-linux-jdk.deb
+    
   launcher:
     plugin: dump
     source: scripts
