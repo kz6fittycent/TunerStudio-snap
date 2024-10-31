@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # JAVA 
-export JAVA_HOME=$SNAP/usr/lib/jvm/java-1.11.0-openjdk-$SNAP_ARCH
+export JAVA_HOME=$SNAP/usr/lib/jvm/java-1.17.0-openjdk-$SNAP_ARCH
 export PATH=$JAVA_HOME/bin:$JAVA_HOME/jre/bin:$PATH
 
 # VARS
