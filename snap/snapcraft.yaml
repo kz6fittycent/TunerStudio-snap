@@ -32,7 +32,6 @@ platforms:
 
 apps:
   tunerstudio: 
-  after: [corretto]
     extensions: 
       - gnome
     command: launch
@@ -108,6 +107,7 @@ parts:
     after:
       - tunerstudio
       - launcher
+      - corretto
     plugin: nil
     build-snaps: 
       - core24
