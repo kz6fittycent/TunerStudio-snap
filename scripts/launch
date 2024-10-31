@@ -11,7 +11,7 @@ SERIAL_DRIVER="lib/alternateLinuxDrivers/$SNAP_ARCH-linux:"
 # Execute
 cd $SNAP/bin/TunerStudioMS/
 
-java -Dfile.encoding=ISO-8859-1 -Dcom.ibm.crypto.provider.DoRSATypeChecking=false -Djava.library.path=${SERIAL_DRIVER}lib -cp ".:lib:plugins" -jar TunerStudioMS.jar $1
+java -Dcom.ibm.crypto.provider.DoRSATypeChecking=false -Djava.library.path=${SERIAL_DRIVER}lib -cp ".:lib:plugins" -jar TunerStudioMS.jar $1
 RESULT=$?
 
 if [ -d "$LAST_PATH" ]; then
