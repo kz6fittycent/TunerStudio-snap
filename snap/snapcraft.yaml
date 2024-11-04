@@ -14,7 +14,7 @@ description: |
   
   This is NOT an officially supported snap from TunerStudio. 
 
-base: core22
+base: core24
 grade: stable
 confinement: strict
 compression: lzo
@@ -25,8 +25,10 @@ website: https://www.tunerstudio.com/
 issues: https://github.com/kz6fittycent/TunerStudio-snap/issues
 source-code: https://github.com/kz6fittycent/TunerStudio-snap
 
-architectures:
-  - build-on: amd64
+platforms:
+  amd64:
+    build-on: [amd64]
+    build-for: [amd64]
 
 apps:
   tunerstudio: 
@@ -87,8 +89,10 @@ parts:
       - libfontconfig1
       - x11-xserver-utils
       - libgtk-3-dev   
-      - ca-certificates-java
-      - ca-certificates               
+
+    override-prime: |
+      craftctl prime
+      rm -vf usr/lib/jvm/java-8-openjdk-*/lib/security/blacklisted.certs
 
     stage:
     - -usr/lib/jvm/java-8-openjdk-*/lib/security/cacerts
@@ -104,4 +108,4 @@ parts:
       - launcher
     plugin: nil
     build-snaps: 
-      - core22
+      - core24

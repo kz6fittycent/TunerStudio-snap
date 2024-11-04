@@ -14,7 +14,7 @@ jobs:
       run: |
         sudo apt-get update
         sudo apt-get install -yqq snapd
-        VERSION=$(curl -s "https://www.efianalytics.com/TunerStudio/beta/" | grep "tar.gz" | head -n1 | cut -d '"' -f2 | cut -d "_" -f2 | sed 's/v//')
+        VERSION=$(curl -s "https://www.efianalytics.com/TunerStudio/download/" | grep "tar.gz" | head -n1 | cut -d '"' -f2 | cut -d "_" -f2 | sed 's/v//' | sed 's/.tar.gz//)
         EDGEVER="$(snap info tunerstudio | awk '$1 == "latest/edge:" { print $2 }')"
         if [ "$VERSION" != "$EDGEVER" ]; then
           echo "$(date -u --rfc-3339=seconds) Version $VERSION" >> .build.stamp
