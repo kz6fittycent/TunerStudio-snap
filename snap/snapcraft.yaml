@@ -48,8 +48,8 @@ apps:
       - bluez
       - bluetooth-control
     environment: 
-      JAVA_HOME: $SNAP/usr/lib/jvm/java-17-openjdk-amd64
-      JRE_HOME: $SNAP/usr/lib/jvm/java-17-openjdk-amd64/jre  
+      JAVA_HOME: $SNAP/usr/lib/jvm/java-8-openjdk-amd64
+      JRE_HOME: $SNAP/usr/lib/jvm/java-8-openjdk-amd64/jre  
       
 parts:
   tunerstudio:    
@@ -79,8 +79,8 @@ parts:
       - curl
 
     stage-packages:
-      - openjdk-17-jdk
-      - openjdk-17-jre
+      - openjdk-8-jdk
+      - openjdk-8-jre
       - librxtx-java    
       - fontconfig
       - fontconfig-config
@@ -91,8 +91,8 @@ parts:
       - ca-certificates               
 
     stage:
-    - -usr/lib/jvm/java-17-openjdk-*/lib/security/cacerts
-    - -usr/lib/jvm/java-17-openjdk-*/lib/security/blacklisted.certs 
+    - -usr/lib/jvm/java-8-openjdk-*/lib/security/cacerts
+    - -usr/lib/jvm/java-8-openjdk-*/lib/security/blacklisted.certs 
     
   launcher:
     plugin: dump
