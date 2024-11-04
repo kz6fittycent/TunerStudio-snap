@@ -90,13 +90,10 @@ parts:
       - x11-xserver-utils
       - libgtk-3-dev   
 
-    override-prime: |
-      craftctl prime
-      rm -vf usr/lib/jvm/java-8-openjdk-*/lib/security/blacklisted.certs
-
     stage:
     - -usr/lib/jvm/java-8-openjdk-*/lib/security/cacerts
-    - -usr/lib/jvm/java-8-openjdk-*/lib/security/blacklisted.certs 
+    - -usr/lib/jvm/java-8-openjdk-*/lib/security/blocked.certs 
+    - -usr/lib/jvm/java-8-openjdk-amd64/jre/lib/security/cacerts
     
   launcher:
     plugin: dump
