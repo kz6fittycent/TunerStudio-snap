@@ -1,6 +1,6 @@
 #!/bin/sh
 
-$JAVA_VER=$(ls $SNAP/usr/lib/jvm/ | grep jdk | head -n 1)
+JAVA_VER=$(ls $SNAP/usr/lib/jvm/ | grep jdk | head -n 1)
 
 # JAVA 
 export JAVA_HOME=$SNAP/usr/lib/jvm/$JAVA_VER-$SNAP_ARCH
