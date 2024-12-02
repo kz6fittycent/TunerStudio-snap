@@ -3,7 +3,7 @@
 JAVA_VER=$(ls $SNAP/usr/lib/jvm/ | grep jdk | head -n 1)
 
 # JAVA 
-export JAVA_HOME=$SNAP/usr/lib/jvm/$JAVA_VER-$SNAP_ARCH
+export JAVA_HOME=$SNAP/usr/lib/jvm/$JAVA_VER
 export PATH=$JAVA_HOME/bin:$JAVA_HOME/jre/bin:$PATH
 
 # VARS
