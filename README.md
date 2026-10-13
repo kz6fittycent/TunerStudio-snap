@@ -47,3 +47,10 @@ To try a candidate build:
 Maintainers release a tested revision to stable by commenting
 `/promote <revision> stable done` on its issue
 ([🚀 Promote to Stable](.github/workflows/promote-to-stable.yml)).
+
+## License
+
+The packaging in this repository (snapcraft.yaml, scripts and workflows) is
+released under the [MIT License](LICENSE). TunerStudio MS itself is
+proprietary software from EFI Analytics and is not covered by this license;
+the snap downloads it from efianalytics.com at build time.
