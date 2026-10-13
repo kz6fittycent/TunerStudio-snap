@@ -20,7 +20,9 @@ grade: stable
 confinement: strict
 compression: lzo
 icon: snap/gui/tunerstudio.png
-license: proprietary
+# "Proprietary" (capitalised) is what snap pack accepts; snapcraft suggests
+# lowercase "proprietary", but snapd rejects it as an unknown license.
+license: Proprietary
 contact: https://www.tunerstudio.com/
 website: https://www.tunerstudio.com/
 issues: https://github.com/kz6fittycent/TunerStudio-snap/issues
