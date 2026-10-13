@@ -6,6 +6,11 @@ JAVA_VER=$(ls $SNAP/usr/lib/jvm/ | grep jdk | head -n 1)
 export JAVA_HOME=$SNAP/usr/lib/jvm/$JAVA_VER
 export PATH=$JAVA_HOME/bin:$JAVA_HOME/jre/bin:$PATH
 
+# BROWSER
+# TunerStudio only looks for named browsers (firefox, chrome, ...) on PATH;
+# $SNAP/browser/firefox forwards links to xdg-open (see that script).
+export PATH=$SNAP/browser:$PATH
+
 # HOME
 # Java takes user.home from the passwd entry (the real home), not $HOME. Strict
 # confinement blocks top-level dot-dirs there, so TunerStudio could not create

@@ -1,0 +1,6 @@
+#!/bin/sh
+# TunerStudio opens links by searching PATH for a fixed list of browsers
+# (firefox, chrome, opera, ...) and never tries xdg-open, so inside the snap
+# it reports "Could not find web browser". This stand-in hands the URL to
+# xdg-open, which snapd routes to the user's default browser on the host.
+exec xdg-open "$@"
