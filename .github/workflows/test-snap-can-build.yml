@@ -1,7 +1,7 @@
 name: 🧪 Snap Builds
 
-# Pull requests only: pushes to main are built and published to beta by
-# build-and-publish.yml.
+# Pull requests only: pushes to main are built and published to candidate by
+# call-for-testing.yml.
 on:
   pull_request:
     branches: [ main ]
