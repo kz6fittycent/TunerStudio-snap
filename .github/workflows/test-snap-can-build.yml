@@ -1,17 +1,20 @@
 name: 🧪 Snap Builds
 
+# Pull requests only: pushes to main are built and published to beta by
+# build-and-publish.yml.
 on:
-  push:
-    branches: [ main ]
   pull_request:
     branches: [ main ]
-    
+
+permissions:
+  contents: read
+
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v7
 
       - uses: snapcore/action-build@v1
         id: build
@@ -23,3 +26,9 @@ jobs:
           # Plugs and Slots declarations to override default denial (requires store assertion to publish)
           # plugs: ./plug-declaration.json
           # slots: ./slot-declaration.json
+
+      - uses: actions/upload-artifact@v7
+        with:
+          name: tunerstudio-snap
+          path: ${{ steps.build.outputs.snap }}
+          retention-days: 7

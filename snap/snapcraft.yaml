@@ -19,7 +19,7 @@ grade: stable
 confinement: strict
 compression: lzo
 icon: snap/gui/tunerstudio.png
-license: Proprietary
+license: proprietary
 contact: https://www.tunerstudio.com/
 website: https://www.tunerstudio.com/
 issues: https://github.com/kz6fittycent/TunerStudio-snap/issues
@@ -56,29 +56,31 @@ apps:
 parts:
   tunerstudio:    
     plugin: nil
-    override-build: |     
-      #VARS
-      ################################
-      TAR=$(curl -s "https://www.efianalytics.com/TunerStudio/download/" | grep "tar.gz" | head -n1 | cut -d '"' -f2)
-      ################################
-      mkdir -p BUILD
-      cd BUILD/
-      wget -O tunerstudio.tar.gz https://www.efianalytics.com/TunerStudio/download/${TAR}
-      tar -xzvf tunerstudio.tar.gz
+    # Upstream has no stable "latest" URL, so the newest Linux tarball is
+    # discovered from the download page (see snap/local/tunerstudio-latest.sh).
+    override-pull: |
+      set -eu
+      LATEST=$(sh "$CRAFT_PROJECT_DIR/snap/local/tunerstudio-latest.sh")
+      VERSION=${LATEST%% *}
+      URL=${LATEST#* }
+      echo "Fetching TunerStudio MS $VERSION from $URL"
+      rm -rf TunerStudioMS tunerstudio.tar.gz
+      curl -fSL --retry 5 --retry-delay 5 -o tunerstudio.tar.gz "$URL"
+      gzip -t tunerstudio.tar.gz
+      tar -xzf tunerstudio.tar.gz
       rm tunerstudio.tar.gz
-      mkdir -p $CRAFT_PART_INSTALL/bin/
-      cp -r * $CRAFT_PART_INSTALL/bin/
+      test -f TunerStudioMS/TunerStudioMS.jar
+      craftctl set version="$VERSION"
 
-    override-pull: |    
-      craftctl default
-      craftctl set version=$(curl -s "https://www.efianalytics.com/TunerStudio/download/" | grep "tar.gz" | head -n1 | cut -d '"' -f2 | cut -d "_" -f2 | sed 's/v//' | sed 's/.tar.gz//')
-      
+    override-build: |
+      mkdir -p "$CRAFT_PART_INSTALL/bin"
+      cp -r "$CRAFT_PART_SRC/TunerStudioMS" "$CRAFT_PART_INSTALL/bin/"
+
     build-packages:
-      - wget
-      - tar
-      - gawk
-      - sed
+      - ca-certificates
       - curl
+      - gzip
+      - tar
 
     stage-packages:
       - openjdk-17-jdk

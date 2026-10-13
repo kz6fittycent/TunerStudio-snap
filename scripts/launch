@@ -2,22 +2,29 @@
 
 JAVA_VER=$(ls $SNAP/usr/lib/jvm/ | grep jdk | head -n 1)
 
-# JAVA 
+# JAVA
 export JAVA_HOME=$SNAP/usr/lib/jvm/$JAVA_VER
 export PATH=$JAVA_HOME/bin:$JAVA_HOME/jre/bin:$PATH
 
+# HOME
+# Java takes user.home from the passwd entry (the real home), not $HOME. Strict
+# confinement blocks top-level dot-dirs there, so TunerStudio could not create
+# ~/.efiAnalytics ("Error saving preference file"). Point Java at the snap's
+# home ($SNAP_USER_DATA) so preferences and downloaded ini files can be saved.
+JAVA_HOME_DIR="$SNAP_USER_DATA"
+REAL_HOME="${SNAP_REAL_HOME:-$(getent passwd "$(id -u)" | cut -d: -f6)}"
+
+# Keep projects in the real ~/TunerStudioProjects so they stay easy to find and
+# are shared with non-snap installs.
+mkdir -p "$REAL_HOME/TunerStudioProjects"
+if [ ! -e "$JAVA_HOME_DIR/TunerStudioProjects" ]; then
+	ln -s "$REAL_HOME/TunerStudioProjects" "$JAVA_HOME_DIR/TunerStudioProjects"
+fi
+
 # VARS
-SCRIPT=$0
-SERIAL_DRIVER="lib/alternateLinuxDrivers/$SNAP_ARCH-linux:$SNAP_ARCH"
+SERIAL_DRIVER="lib/alternateLinuxDrivers/x86_64-linux:"
 
 # Execute
 cd $SNAP/bin/TunerStudioMS/
 
-java -Dcom.ibm.crypto.provider.DoRSATypeChecking=false -Djava.library.path=${SERIAL_DRIVER}lib -cp ".:lib:plugins" -jar TunerStudioMS.jar $1
-RESULT=$?
-
-if [ -d "$LAST_PATH" ]; then
-	cd "$LAST_PATH"
-fi
-
-exit $RESULT
+exec java -Duser.home="$JAVA_HOME_DIR" -Dcom.ibm.crypto.provider.DoRSATypeChecking=false -Djava.library.path=${SERIAL_DRIVER}lib -cp ".:lib:plugins" -Dfile.encoding=UTF8 -jar TunerStudioMS.jar "$@"
