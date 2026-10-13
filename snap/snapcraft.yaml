@@ -1,9 +1,10 @@
 name: tunerstudio
 adopt-info: tunerstudio
-summary: TunerStudio MS - an advanced MegaSquirt Tuning Software
+title: TunerStudio MS
+summary: UNOFFICIAL - TunerStudio MS - an advanced MegaSquirt Tuning Software
 description: |
-  TunerStudio MS, the most most advanced and refined MegaSquirt Tuning software available.
-  The registered and Lite! editions are the same installer. 
+  TunerStudio MS, the most advanced and refined MegaSquirt Tuning software available.
+  The registered and Lite! editions are the same installer.
   
   After installing, run the following commands:
   
@@ -12,7 +13,7 @@ description: |
   sudo snap connect tunerstudio:bluez
   sudo snap connect tunerstudio:bluetooth-control
   
-  This is NOT an officially supported snap from TunerStudio. 
+  This is NOT an officially supported snap from EFI Analytics.
 
 base: core24
 grade: stable
